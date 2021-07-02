@@ -1,0 +1,264 @@
+*{
+margin: 0;
+padding: 0;
+
+}
+html{
+    font-size: 62.5%;
+}
+:root{
+    --color-body-bg : #090b1a;
+    --color-section-bg:#1b1938;
+    --color-accent:#aa5cdb;
+
+    --color-white: hsl(0, 0%, 100%);
+    --color-slight-white-paragrph: hsla(0, 0%, 100%, 0.75);
+    --color-slight-white-heading:#ffffff99;
+    --padding-left:7.2rem;
+}
+@mixin respond($breakpoint){
+    @if $breakpoint == phone{
+        @media(max-width:37.5em){ //600px
+            @content;
+        }
+    }
+    @if $breakpoint == tab-port{
+        @media(max-width:56.25em){    //900px
+            @content;
+        }
+    }
+    @if $breakpoint == tab-land{
+        @media(max-width:75em){   //1200px
+            @content;
+        }
+    }
+    @if $breakpoint == big-desktop{
+        @media(min-width:112.5em){   //1800px
+            @content;
+        }
+    }
+   
+    
+}
+
+body{
+    background-color: var(--color-body-bg);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    @include respond(tab-land){
+        display: block;
+        position: absolute;
+        
+    }
+}
+.card{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    @include respond(tab-land){
+        display: block;
+        width: 100vw;
+        position: relative;
+        height: 100vh;
+    }
+    @include respond(tab-port){
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-top: 8.8rem;
+        height: max-content;
+    }
+    &__content{
+        width: 57rem;
+        background-color: var(--color-section-bg);
+        border-radius: 10px 0 0 10px;
+        @include respond(tab-land){
+            width:50rem;
+            display: block;
+            position: absolute;
+            z-index: 2;
+            top:10%;
+            left:4.1rem;
+            border-radius: 10px;
+        }
+        @include respond(tab-port){
+            display: flex;
+            flex-direction: column;
+            position: static;
+            width:50rem;
+        }
+        @include respond(phone){
+            position: static;
+            width:32.7rem;
+            // height: 24rem;
+            // border-radius: 10px 10px 0 0 ;
+
+
+        }
+    }
+    &__heading{
+        font-size: 3.6rem;
+        width: 42.6rem;
+        font-weight: 700;  
+        color:var(--color-white);
+        &--accent{
+            color:var(--color-accent);
+        }
+        letter-spacing: -.1;
+        padding-top: 7.2rem;
+        padding-bottom: 2.8rem;
+        padding-left: var(--padding-left);
+        @include respond(tab-land){
+            width: 40rem;
+            padding:5rem 5rem 2.8rem 5rem;
+            
+        }
+        @include respond(tab-land){
+
+            text-align: center;
+            
+        }
+        @include respond(phone){
+            width: 26rem;
+            height: 11rem;
+            font-size: 2.8rem;
+            padding:3.8rem 0 0 0 ;
+            margin : 0 auto;
+            line-height: 3.25rem;
+            letter-spacing: 0;
+            
+        }
+    
+    }
+    &__paragraph{
+        font-size: 1.6rem;
+        color:var(--color-slight-white-paragrph);
+        width: 37rem ;
+        letter-spacing: -.3;
+        line-height: 2.2rem;
+        padding-bottom: 8rem;
+        padding-left: var(--padding-left);
+        @include respond(tab-land){
+            
+            padding:0 0 7rem 5rem;
+            
+        }
+        @include respond(tab-land){
+            
+            text-align: center;
+            
+            
+        }
+        @include respond(phone){
+            width: 28rem;
+            font-size: 1.6rem;
+            line-height: 2.072rem;
+            letter-spacing: -3%;
+            padding: .7rem 0 2.6rem 0;
+            margin : 0 auto;
+            
+        }
+        
+    }
+    &__stats{
+        display: grid;
+        grid-template-rows: 2.4rem 1.4rem;
+        grid-template-columns: repeat (3,1fr);
+        column-gap: 6.2rem;
+        row-gap: 1rem;
+        grid-auto-flow: column;
+        padding-left: var(--padding-left);
+        width: 37rem;
+        padding-bottom: 6.8rem;
+        @include respond(tab-land){
+            
+            padding:0 0 5rem 5rem;
+            
+        }
+        @include respond(tab-port){
+            padding: 0;
+            margin: 0 auto;
+            padding-bottom: 6.8rem;
+
+        }
+        @include respond(phone){
+            grid-auto-flow: row;
+            width: 32.7rem;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            row-gap:0;
+
+        }
+        &-figure{
+            font-size: 2.4rem;
+            letter-spacing: 0;
+            color: var(--color-slight-white-heading);
+            font-weight: 700;
+            
+            
+        }
+        &-subtext{
+            letter-spacing: -.3;
+            font-size: 1.4rem ;
+            color: var(--color-white);
+            text-transform: uppercase;
+            font-family: 'Lexend Deca', sans-serif;
+            @include respond(phone){
+                padding:1rem 0 3.2rem 0;
+            &:last-child{
+                padding-bottom: 4.1rem;
+            }
+    
+            }
+            
+        }
+    }
+    &__photo{
+        width:54.2rem;
+        height:45rem;
+        background-color: #fff;
+        
+        background-image: linear-gradient(var(--color-accent),var(--color-accent)), url('./images/image-header-desktop.jpg') ;
+        background-blend-mode: multiply;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 0 10px 10px 0;
+        @include respond(tab-land){
+        
+            display: block;
+            position: absolute;
+            top:0;
+            right: 0;
+            height:100vh;
+            width:70%;
+            background-position: right;
+            z-index: 1;
+            border-radius: 0;
+        }
+        @include respond(tab-port){
+            position: static;
+            width:50rem;
+            height: 40rem;
+            border-radius: 10px 10px 0 0 ;
+
+
+        }
+        @include respond(phone){
+            position: static;
+            width:32.7rem;
+            height: 24rem;
+            border-radius: 10px 10px 0 0 ;
+
+
+        }
+        
+    }
+}
+
+
