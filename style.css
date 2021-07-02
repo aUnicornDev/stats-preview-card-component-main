@@ -43,6 +43,18 @@ body {
   }
 }
 
+@media (max-width: 56.25em) {
+  body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: static;
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+  }
+}
+
 .card {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -77,10 +89,15 @@ body {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    margin-top: 8.8rem;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding-top: 8.8rem;
     height: -webkit-max-content;
     height: -moz-max-content;
     height: max-content;
+    width: 100%;
+    padding-bottom: 8.8rem;
   }
 }
 
@@ -113,6 +130,7 @@ body {
             flex-direction: column;
     position: static;
     width: 50rem;
+    border-radius: 0 0 10px 10px;
   }
 }
 
